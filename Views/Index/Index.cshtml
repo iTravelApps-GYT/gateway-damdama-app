@@ -1,0 +1,66 @@
+﻿@model TAJdamaProject.Models.TajDama
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head  >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="~/css/style.css" type="text/css" />
+    <style>
+        #Button1 {
+            position: absolute;
+            bottom: 120px;
+            right: 639px;
+        }
+    </style>
+</head>
+@using (Html.BeginForm("Index", "Index", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+<body>
+    <div class="tophead">
+        <h2>Please Enter Guest Details</h2>
+    </div>
+    <div class="form">
+        <form id="form1">
+            <label>FIRST NAME:</label>
+            @Html.TextBoxFor(M => M.objHome.Fname, new { @id = "Name", @Maxlength = "15"})
+            <label>LAST NAME:</label>
+            @Html.TextBoxFor(M => M.objHome.Lname, new { @id = "LName", @Maxlength = "15"})
+            <label>ROOM NO. :</label>
+            @Html.TextBoxFor(M => M.objHome.RoomNo, new { @id = "RoomNo", @Maxlength = "4"})
+            <label>CHECK-IN DATE:</label>
+            @Html.TextBoxFor(M => M.objHome.Checkin, new { @id = "Checkin", @Type = "Date"})
+            <label>CHECK-OUT DATE:</label>
+            @Html.TextBoxFor(M => M.objHome.Checkout, new { @id = "CheckOut", @Type = "Date"})
+            <label>Select Option:</label>
+            @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Individual",
+                    Value = "101",
+                    Selected = true
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Team",
+                    Value = "102",
+                });
+            }
+            @Html.DropDownListFor(M => M.objHome.DDLValue, listItems, new { @id = "Name" })
+           <input type="submit" id="btnsave" value="SUBMIT" style="position: absolute;top: 455px;left: 664px;" />
+        </form>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+</body>
+                }
+</html>

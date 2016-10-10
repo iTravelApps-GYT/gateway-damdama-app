@@ -1,0 +1,89 @@
+﻿@model List<TAJdamaProject.Models.ModelAppcode>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head id="Head1"  >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="~/css/style.css" type="text/css" />
+    <style type="text/css">
+        .QA {
+            margin: 0px auto;
+        }
+
+        .form {
+            padding: 25px;
+            margin: 70px auto 50px auto;
+            text-align: center;
+            width: 60%;
+            height: 200px;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        span {
+            text-align: left;
+            width: 48%;
+            float: left;
+            height: 30px;
+            margin: 3px;
+            padding-left: 6px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0;font-family: 'TrajanBold';background: url('../img/bg.jpg'); ">
+    @using (Html.BeginForm("QRcode", "Index", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+
+        <div class="tophead">
+            <h2>Please scan the QR code to play Treasure Hunt</h2>
+        </div>
+        <br /><br />
+        <form id="form1" >
+            @foreach (var item in Model)
+            {
+
+                <div class="QA">
+                    <p>QR Code</p><br /><br />
+                    <div class="barcode"><img src="@Url.Content(String.Format("~/Image/{0}",item.ImgURL))" width="150" /></div>
+                </div>
+                <div class="form" style="font-size:20px;">
+                    <label id="Label1" style="font-size:18px;">FIRST NAME : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.Fname)</font></label>
+                    <label id="Label15" style="font-size:18px;">LAST NAME : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.Lname)</font></label>
+                    <label id="Label16" style="font-size:18px;">ROOM NO : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.RoomNo)</font></label>
+                    <label id="Label18" style="font-size:18px;">CHECK-IN DATE : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.Checkin)</font></label>
+                    <label id="Label19" style="font-size:18px;">CHECK-OUT DATE : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.Checkout)</font></label>
+                    <label style="font-size:18px;">CUSTOMER ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">@Html.Raw(item.ID)</label>
+                </div>
+            }
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /><br /><br />
+        <br /><br /><br /><br />
+        <br /><br /><br />
+        <br /><br /><br /><br />
+        <br />
+        <br />
+        <br />
+        <br /><br /><br />
+       
+        <div class="footer">
+
+        </div>
+        @*<input type="submit" value="Print" style="position:absolute;top:200px;left:200px"/>*@
+    }
+@*@using (Html.BeginForm("getPDF", "Index", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <input type="submit" value="Print2" style="position:absolute;top:400px;left:200px"/>
+}*@
+</body>
+
+</html>
